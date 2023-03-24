@@ -8,6 +8,7 @@ try{
     let result = {status:"success"}
     result.data =  await  Categories.find({}).toArray()
     result.message = result.data.length
+    result.data.map(item=> item.img=`${process.env.HOST}${item.img}`) 
     res.send(result) 
 } 
 catch (error) { console.log(error)}
@@ -22,6 +23,7 @@ try{
     const category =  await  Categories.find({'_id': new ObjectId(ID) }).toArray()
     result.data = await Rooms.find({category:category[0].name}).toArray()
     result.message = result.data.length
+    result.data.map(item=> item.image=`${process.env.HOST}${item.image}`) 
     res.send(result) 
 } 
 catch (error) { console.log(error)}

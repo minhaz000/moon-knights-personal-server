@@ -8,6 +8,7 @@ try{
     let result = {status:"success"}
     result.data =  await  Rooms.find({}).toArray()
     result.message = result.data.length
+    result.data.map(item=> item.image=`${process.env.HOST}${item.image}`) 
     res.send(result) 
 } 
 catch (error) { console.log(error)}
@@ -20,6 +21,7 @@ try{
     let result = {status:"success"}
     result.data =  await  Rooms.find({'_id': new ObjectId(ID)}).toArray()
     result.message = result.data.length
+    result.data.map(item=> item.image=`${process.env.HOST}${item.image}`) 
     res.send(result) 
   
 } 
