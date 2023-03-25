@@ -1,0 +1,27 @@
+[ 
+  {
+    "name":"Qatar Airways",
+    "description":"Category  Rent  bar/restaurent",
+    "img":"'https://i.ibb.co/nwLnwMQ/Qatar.jpg'"
+  },
+  {
+    "name":"Emirates",
+    "description":"Category  Rent swimmin pool",
+    "img":"https://i.ibb.co/C7xkd3Z/emirates.png"
+  },
+  {
+    "name":"Flydubai",
+    "description":"Ctegory  Rent gym-center",
+    "img":"https://i.ibb.co/GcHPnfY/Fly-Dubai-Logo.png"
+  },
+  {
+    "name":"Qantas",
+    "description":"Ctegory  Rent spa-yoga",
+    "img":"https://i.ibb.co/vj72XDr/qantas.png"
+  },
+  {
+    "name":"Japan Airline",
+    "description":"Category  Rent weddind",
+    "img":"https://i.ibb.co/MS750JV/japanairline.png"
+  }
+]

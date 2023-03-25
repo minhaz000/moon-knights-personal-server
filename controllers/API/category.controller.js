@@ -1,7 +1,7 @@
 const { ObjectId } = require('mongodb')
 const DB = require('../../db.config')
-const Categories = DB.client.db(process.env.DATABASE_NAME||'test').collection('room-categories')
-const Rooms = DB.client.db(process.env.DATABASE_NAME||'test').collection('rooms')
+const Categories = DB.client.db(process.env.DATABASE_NAME||'test').collection('flights-categories')
+const Flights = DB.client.db(process.env.DATABASE_NAME||'test').collection('flights')
 //========================== GET Categories ==================================================
 exports.index = async (req,res)=>{
 try{
@@ -14,13 +14,13 @@ catch (error) { console.log(error)}
 
 
 }
-//========================== GET Rooms useing Category ==================================================
-exports.getRoomsByCategory = async (req,res)=>{
+//========================== GET Flights useing Category ==================================================
+exports.getFlightsByCategory = async (req,res)=>{
 try{
     const ID = req.params.ID
     let result = {status:"success"}
     const category =  await  Categories.find({'_id': new ObjectId(ID) }).toArray()
-    result.data = await Rooms.find({category:category[0].name}).toArray()
+    result.data = await Flights.find({category:category[0].name}).toArray()
     result.message = result.data.length
     res.send(result) 
 } 

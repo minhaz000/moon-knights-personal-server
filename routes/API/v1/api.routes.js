@@ -1,6 +1,6 @@
 const express = require('express');
 const Middleware = require('../../../middleware/middleware')
-const RoomController = require('../../../controllers/API/room.controller');
+const FlightController = require('../../../controllers/API/flight.controller');
 const CategoryController = require('../../../controllers/API/category.controller');
 const UserController = require('../../../controllers/API/user.controller');
 const router = express.Router();
@@ -20,17 +20,23 @@ const router = express.Router();
  */
 router.get('/categories',CategoryController.index)
 router.post('/category',Middleware.verfyAdmin,CategoryController.create)
-router.get('/category/:ID',CategoryController.getRoomsByCategory)
+router.get('/category/:ID',CategoryController.getFlightsByCategory)
 router.put('/category/:ID',Middleware.verfyAdmin,CategoryController.update)
 router.delete('/category/:ID',Middleware.verfyAdmin,CategoryController.delete)
 
 // Rooms Route 
-router.get('/rooms',RoomController.index)
-router.post('/room',Middleware.verfyAdmin,RoomController.create)
-router.get('/room/:ID',RoomController.getRoomByID)
-router.put('/room/:ID',Middleware.verfyAdmin,RoomController.update)
-router.delete('/room/:ID',Middleware.verfyAdmin,RoomController.delete)
+router.get('/flights',FlightController.index)
+router.post('/room',Middleware.verfyAdmin,FlightController.create)
+router.get('/room/:ID',FlightController.getRoomByID)
+router.put('/room/:ID',Middleware.verfyAdmin,FlightController.update)
+router.delete('/room/:ID',Middleware.verfyAdmin,FlightController.delete)
+
+// Booking Route 
+router.get('/bookings',FlightController.index)
+router.post('/booking',FlightController.create)
+router.post('/booking/:ID',FlightController.delete)
 // User Route 
 router.post('/get-token',UserController.getToken)
+router.get('/all-users',UserController.getUsers)
 
 module.exports= router

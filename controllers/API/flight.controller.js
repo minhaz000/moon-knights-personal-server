@@ -1,12 +1,13 @@
 const { ObjectId } = require('mongodb')
 const DB = require('../../db.config')
-const Rooms = DB.client.db(process.env.DATABASE_NAME||'test').collection('rooms')
+const Flights = DB.client.db(process.env.DATABASE_NAME||'test').collection('flights')
 //========================== GET Room ==================================================
 
-exports.index = async (req,res)=>{
+exports.index = async(req,res)=>{
 try{
     let result = {status:"success"}
-    result.data =  await  Rooms.find({}).toArray()
+    result.data =  await  Flights.find({}).toArray()
+   
     result.message = result.data.length
     res.send(result) 
 } 
@@ -18,7 +19,7 @@ exports.getRoomByID = async (req,res)=>{
 try{
     const ID = req.params.ID
     let result = {status:"success"}
-    result.data =  await  Rooms.find({'_id': new ObjectId(ID)}).toArray()
+    result.data =  await  Flights.find({'_id': new ObjectId(ID)}).toArray()
     result.message = result.data.length
     res.send(result) 
   
@@ -31,7 +32,7 @@ exports.create = async (req,res)=>{
 try{
     const newRoom = req.body
     let result = {status:"success"}
-    result.data =  await  Rooms.insertOne(newRoom)
+    result.data =  await  Flights.insertOne(newRoom)
     res.send(result) 
 } 
 catch (error) { console.log(error)}
@@ -44,7 +45,7 @@ try{
     const ID = req.params.ID
     const UpdateRomm = req.body 
     let result = {status:"success"}
-    result.data =  await  Rooms.updateOne({'_id': new ObjectId(ID)},{$set:UpdateRomm},{upsert:true})
+    result.data =  await  Flights.updateOne({'_id': new ObjectId(ID)},{$set:UpdateRomm},{upsert:true})
     res.send(result) 
 } 
 catch (error) { console.log(error)}
@@ -57,7 +58,7 @@ try{
     const ID = req.params.ID
     console.log( ID)
     let result = {status:"success"}
-    result.data =  await  Rooms.deleteOne({'_id': new ObjectId(ID)})
+    result.data =  await  Flights.deleteOne({'_id': new ObjectId(ID)})
     res.send(result) 
 } 
 catch (error) { console.log(error)}

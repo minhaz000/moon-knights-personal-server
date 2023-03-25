@@ -3,7 +3,7 @@ const DB = require('../../db.config')
 const JWT = require('jsonwebtoken')
 const Users = DB.client.db(process.env.DATABASE_NAME||'test').collection('users')
 
-exports.index = async(req,res)=>{
+exports.getUsers = async(req,res)=>{
 try {
 
  const  result  = await Users.find({}).toArray()
